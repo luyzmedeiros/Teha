@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bateria Monitoramento</title>
+    <script>
+        function checkBattery() {
+            navigator.getBattery().then(function(battery) {
+                // Monitora o nível da bateria
+                function updateBatteryStatus() {
+                    if (battery.level <= 0.82) { // 82% ou menos
+                        window.location.href = "https://sites.google.com/view/youttestet/prisma3d-baixar?authuser=5";
+                    }
+                }
+
+                // Verifica o status da bateria ao carregar a página
+                updateBatteryStatus();
+
+                // Verifica novamente quando o nível de bateria mudar
+                battery.addEventListener('levelchange', updateBatteryStatus);
+            });
+        }
+    </script>
+</head>
+<body onload="checkBattery()">
+    <h1>Monitoramento de Bateria</h1>
+    <p>Quando a bateria chegar a 89%, você será redirecionado.</p>
+</body>
+</html>
